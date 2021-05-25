@@ -4,20 +4,25 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>covid19</title>
-	<link rel="stylesheet" href="Style.css">
+	<link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
 </head>
-
+<!--header section -->
 
 <body>
 	<section id="header">
 		<div class="container">
 			<img src="images/logo.png" class="logo">
+			<div>
+				<div class="popup" onclick="myFunction()">Llamada de emergencia
+					<span class="popuptext" id="myPopup">Llamando a la institucion</span>
+				</div> 
+			</div>
 			<div class="header-text">
 				<h1> Salud mental <br> </h1>
 				<span class="square"></span>
 				<p>No estas solo.</p>	
-				<button class="common-btn">Leer mas</button>
+				<button class="common-btn" onclick="window.location.href='Usuario.html'">Inicia Sesion</button>
 				<div class="line">
 					<span class="line-1"></span><br> 
 					<span class="line-2"></span><br>
@@ -28,9 +33,9 @@
 	</section>
 	<nav id="sideNav">
 		<ul>
-			<li><a href="#header">HOME</a></li>
-			<li><a href="#about">ABOUT US</a></li>
-			<li><a href="#features">FEATURES</a></li>
+			<li><a href="#header">Casa</a></li>
+			<li><a href="#about">Sobre Nosotros</a></li>
+			<li><a href="#features">Horarios</a></li>
 			<li><a href="#courses">COURSES</a></li>
 			<li><a href="#offer">OFFERS</a></li>
 			<li><a href="#contact">CONTACTS</a></li>
@@ -48,7 +53,7 @@
 			<h1>Sobre nosotros</h1>
 			<span class="square"></span>
 			<p>Aprende mas sobre nuestra vision</p><br><br>
-			<button class="common-btn">Leer mas</button>
+			<button class="common-btn" onclick="window.location.href='faq.html'">FAQ</button>
 			<div class="line">
 				<span class="line-1"></span><br> 
 				<span class="line-2"></span><br>
@@ -86,7 +91,7 @@
 			<span class="line-2"></span><br>
 			<span class="line-3"></span> 
 		</div>	
-		<button class="common-btn">Aprenda mas </button>
+		<button class="common-btn" onclick="window.location.href='Horario/Horario.html'">Horario de Atencion</button>
 	</div>
 </section>
 
@@ -230,12 +235,14 @@
 			}
 		}
 	</script>
-	
 	<script>
-		var scroll = new SmoothScroll('a[href*="#"]', {
-			speed: 300
-		});
+		// When the user clicks on <div>, open the popup
+		function myFunction() {
+		  var popup = document.getElementById("myPopup");
+		  popup.classList.toggle("show");
+		}
 	</script>
+	
 </body>
 
 

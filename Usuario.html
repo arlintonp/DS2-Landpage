@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>sesion</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/styleUsuario.css">
+</head>
+<body>
+	<form action="Insert.php" method="POST"></form>
+	<div class="hero">
+		<div class="form-box">
+			<div class="button-box">
+				<div id="btn"></div>
+				<button type="button" class="toggle-btn" onclick="login()">Iniciar sesion</button>
+				<button type="button" class="toggle-btn" onclick="registro()">Registrarse</button>
+			</div>
+			<form id="login" class="input-group">
+				<input type="text" class="input-field" placeholder="Id de usuario" required>
+				<input type="password" class="input-field" placeholder="Ponga clave" required>
+				<input type="checkbox" class="check-box"> <span>Recordar clave</span>
+				<button type="submit" class="submit-btn">Ingresar</button>
+			</form>
+			<form id="registro" class="input-group">
+				<input type="text" name="usuario_reg" class="input-field" placeholder="Id de usuario" required>
+				<input type="email" name="email_reg" class="input-field" placeholder="E-mail" required>
+				<input type="password" name="clave_reg" class="input-field" placeholder="Ponga clave" required>
+				<input type="checkbox" class="check-box"> <span>Estoy de acuerdo con los terminos y condiciones</span>
+				<button type="submit" class="submit-btn">Registrar</button>
+
+		<!--		    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>-->
+				
+				</form>
+		</div>
+	</div>
+		<script>
+			var x = document.getElementById("login");
+			var y = document.getElementById("registro");
+			var z = document.getElementById("btn");
+
+			function registro() {
+				x.style.left = "-400px";
+				y.style.left = "50px";
+				z.style.left = "110px";
+			}
+
+			function login() {
+				x.style.left = "50px";
+				y.style.left = "450px";
+				z.style.left = "0px";
+			}
+		</script>
+</body>
+</html>
