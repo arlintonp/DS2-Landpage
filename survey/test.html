@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Encuesta de salud</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+<div class="page-header">
+    <h1>Encuesta de salud</h1>
+</div>
+
+<!-- Survey - START -->
+<div class="container">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">Informacion personal</div>
+            <div class="panel-body">
+                Genero:
+                <br />
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default">
+                        <input type="radio" autocomplete="off" /> M
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" autocomplete="off" /> F
+                    </label>
+                </div>
+                <br />
+                <br />
+
+                Edad:
+                <br />
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default">
+                        <input type="radio" autocomplete="off" />menos de 18
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" autocomplete="off" />18-25
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" autocomplete="off" />25-50
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" autocomplete="off" />mas de 50
+                    </label>
+                </div>
+                <br />
+                <br />
+
+                Horas de sueño:
+                <br />
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default">
+                        <input type="radio" autocomplete="off" />5-6
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" autocomplete="off" />6-7
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" autocomplete="off" />7-8
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" autocomplete="off" />8-9
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" autocomplete="off" />9-10
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" autocomplete="off" />mas de 10
+                    </label>
+                </div>
+                <br />
+                <br />
+            </div>
+        </div>
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">IMC</div>
+            <div class="panel-body">
+                Peso en KG
+                <p>Altura (en cm)</p>
+          
+                <input type="text" id="height">
+          
+                <p>Peso (in kg)</p>
+          
+                <input type="text" id="weight">
+          
+                <button id="btn">Calculate</button>
+          
+                <div id="result"></div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Calidad de sueño</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2 col-sm-2 col-xs-12">
+                        <span style="font-size:22px;">Sueño:</span>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-2 text-center">
+                        <button id="decrease1" style="width:100%; max-width:35px;">-</button>
+                    </div>
+                    <div class="col-md-8 col-sm-8 col-xs-8">
+                        <div style="width:100%;" id="progress1"></div>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-2 text-center">
+                        <button id="increase1" style="width:100%; max-width:35px;">+</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+<!-- you need to include the shieldui css and js assets in order for the components to work -->
+<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css" />
+<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        $('#rate1').shieldRating({
+            max: 7,
+            step: 0.1,
+            value: 0,
+            markPreset: false
+        });
+
+        $('#rate2').shieldRating({
+            max: 7,
+            step: 0.1,
+            value: 0,
+            markPreset: false
+        });
+
+        $('#rate3').shieldRating({
+            max: 7,
+            step: 0.1,
+            value: 0,
+            markPreset: false
+        });
+
+        var progress1 = $("#progress1").shieldProgressBar({
+            value: 50,
+            text: {
+                enabled: true,
+                template: "{0} %"
+            }
+        }).swidget();
+
+        var progress2 = $("#progress2").shieldProgressBar({
+            value: 50,
+            text: {
+                enabled: true,
+                template: "{0} %"
+            }
+        }).swidget();
+
+        var progress3 = $("#progress3").shieldProgressBar({
+            value: 50,
+            text: {
+                enabled: true,
+                template: "{0} %"
+            }
+        }).swidget();
+
+
+        $("#increase1").shieldButton({
+            events: {
+                click: function () {
+                    progress1.value(progress1.value() + 10);
+                }
+            }
+        });
+        $("#decrease1").shieldButton({
+            events: {
+                click: function () {
+                    progress1.value(progress1.value() - 10);
+                }
+            }
+        });
+
+        $("#increase2").shieldButton({
+            events: {
+                click: function () {
+                    progress2.value(progress2.value() + 10);
+                }
+            }
+        });
+        $("#decrease2").shieldButton({
+            events: {
+                click: function () {
+                    progress2.value(progress2.value() - 10);
+                }
+            }
+        });
+
+        $("#increase3").shieldButton({
+            events: {
+                click: function () {
+                    progress3.value(progress3.value() + 10);
+                }
+            }
+        });
+        $("#decrease3").shieldButton({
+            events: {
+                click: function () {
+                    progress3.value(progress3.value() - 10);
+                }
+            }
+        });
+    });
+</script>
+
+<style>
+    .slider {
+        width: 100%;
+    }
+</style>
+
+<!-- Survey - END -->
+
+</div>
+    <script>
+        window.onload = () => {
+            let button = document.querySelector("#btn");
+          
+            // Function for calculating BMI
+            button.addEventListener("click", calculateBMI);
+         };
+  
+            function calculateBMI() {
+              
+                /* Getting input from user into height variable.
+                Input is string so typecasting is necessary. */
+                let height = parseInt(document
+                        .querySelector("#height").value);
+              
+                /* Getting input from user into weight variable. 
+                Input is string so typecasting is necessary.*/
+                let weight = parseInt(document
+                        .querySelector("#weight").value);
+              
+                let result = document.querySelector("#result");
+              
+                // Checking the user providing a proper
+                // value or not
+                if (height === "" || isNaN(height)) 
+                    result.innerHTML = "Da alura valida!";
+              
+                else if (weight === "" || isNaN(weight)) 
+                    result.innerHTML = "Da peso valido";
+              
+                // If both input is valid, calculate the bmi
+                else {
+              
+                    // Fixing upto 2 decimal places
+                    let bmi = (weight / ((height * height) 
+                                        / 10000)).toFixed(2);
+              
+                    // Dividing as per the bmi conditions
+                    if (bmi < 18.6) result.innerHTML =
+                        `Bajo peso : <span>${bmi}</span>`;
+              
+                    else if (bmi >= 18.6 && bmi < 24.9) 
+                        result.innerHTML = 
+                            `Normal : <span>${bmi}</span>`;
+              
+                    else result.innerHTML =
+                        `Sobre peso : <span>${bmi}</span>`;
+                }
+            }
+    </script>
+</body>
+</html>
